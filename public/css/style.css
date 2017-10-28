@@ -168,10 +168,10 @@ input {
 /* line 59, ../../sass/_08-page.scss */
 .main-container {
   min-height: 100%;
-  padding: 2rem 2rem 0;
+  padding: 4rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 /* line 67, ../../sass/_08-page.scss */
