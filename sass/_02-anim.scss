@@ -1,0 +1,100 @@
+@keyframes temp-unit-change {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  60% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes anim-hello {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes anim-today-weather-icon {
+  from {
+    opacity: 0;
+    transform: translateX(250%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+}
+
+@keyframes anim-today-weather {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes anim-separator {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes anim-forecast {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -200%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+}
+
+@keyframes anim-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes anim-footer {
+  from {
+    opacity: 0;
+    transform: translateY(250%);
+  }
+  to {
+    opacity: 1;
+    transform: 0;
+  }
+}
+
+@keyframes anim-opacity-reverse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

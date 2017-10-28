@@ -1,0 +1,159 @@
+
+%pane {
+  position: fixed;
+  left:0;
+  right:0;
+  height: 50%;
+  transition: transform 0.5s cubic-bezier(0.84, 0.29, 0.22, 0.99);
+}
+
+#intro.done {
+  .pane-top {
+    transform: translateY(-100%);
+  }
+  .pane-bot {
+    transform: translateY(100%);
+    transition-delay: .1s;
+  }
+
+  .container__input-city {
+    transform: translate(-50%, -500%);
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 0s;
+  }
+  .btn-geoloc {
+    transform: translate(-50%, 500%);
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 0s;
+  }
+}
+
+.pane-top {
+  @extend %pane;
+  top:0;
+  z-index: 8;
+
+  background: -moz-linear-gradient(top, #fa5a72 0%, #fa716b 100%);
+  background: -webkit-linear-gradient(top, #fa5a72 0%,#fa716b 100%);
+  background: linear-gradient(to bottom, #fa5a72 0%,#fa716b 100%);
+}
+
+.pane-bot {
+  @extend %pane;
+  bottom: 0;
+  z-index: 8;
+
+  background: -moz-linear-gradient(top, #fa716b 0%, #fa8864 100%);
+  background: -webkit-linear-gradient(top, #fa716b 0%,#fa8864 100%);
+  background: linear-gradient(to bottom, #fa716b 0%,#fa8864 100%);
+}
+
+.btn-geoloc {
+  color: $orange;
+  cursor: pointer;
+  transform: translate3d(-50%, 50%, 0);
+  background: white;
+  padding: .5em 1em;
+
+  &:focus {
+    outline:none;
+  }
+}
+
+.container__input-city {
+  color: $pink;
+  transform: translate3d(-50%, -150%, 0);
+
+  .input-city {
+    padding: .5em 1em;
+    border-radius: 1.25rem 0 0 1.25rem;
+    font-size: 1em;
+    position: relative;
+    width: 75%;
+
+    &:focus {
+      outline:none;
+    }
+  }
+
+  .submit-city {
+    padding: .5rem 1.25rem;
+    border-radius: 0 1.25rem 1.25rem 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 25%;
+    position: absolute;
+    background: $grey;
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      background-image: url(../img/submit.svg);
+      position: absolute;
+      background-size: 1.5em;
+      background-repeat: no-repeat;
+      background-position: center center;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    &:focus {
+      outline:none;
+    }
+  }
+}
+
+.btn-geoloc,
+.container__input-city {
+  position: fixed;
+  z-index: 9;
+  width: 15em;
+  top: 50%;
+  left: 50%;
+  font-size: 1.25em;
+  transition: transform .5s, opacity .25s, color .5s, background .5s;
+  transition-delay: .25s;
+  border-radius: 1em;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-disabled {
+  cursor: not-allowed;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(123, 123, 123, 0.75);
+}
+
+.intro-loader {
+  z-index: 999;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+  width: 5em;
+
+  &.loading {
+    opacity: 1;
+  }
+}
+
+.intro__error {
+  position: absolute;
+  z-index: 9;
+  color: white;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -150%) scale(0);
+  opacity: 0;
+  transition: opacity .1s, transform .5s cubic-bezier(0.41, 1.79, 0.35, 0.6);
+
+  &.visible {
+    opacity: 1;
+    transform: translate(-50%, -150%) scale(1);
+  }
+}
