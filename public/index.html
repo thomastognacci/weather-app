@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Just another weather app - Thomas Tognacci</title>
+
+ <!-- <script src="https://unpkg.com/vue"></script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,400,700" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div id="app" class="block-animations">
+    <div id="intro">
+      <img  id="intro-loader"
+            class="intro-loader"
+            src="data:image/svg+xml;base64,PCEtLSBCeSBTYW0gSGVyYmVydCAoQHNoZXJiKSwgZm9yIGV2ZXJ5b25lLiBNb3JlIEAgaHR0cDovL2dvby5nbC83QUp6YkwgLS0+Cjxzdmcgd2lkdGg9IjQ0IiBoZWlnaHQ9IjQ0IiB2aWV3Qm94PSIwIDAgNDQgNDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjZmZmIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSIyIj4KICAgICAgICA8Y2lyY2xlIGN4PSIyMiIgY3k9IjIyIiByPSIxIj4KICAgICAgICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIKICAgICAgICAgICAgICAgIGJlZ2luPSIwcyIgZHVyPSIxLjhzIgogICAgICAgICAgICAgICAgdmFsdWVzPSIxOyAyMCIKICAgICAgICAgICAgICAgIGNhbGNNb2RlPSJzcGxpbmUiCiAgICAgICAgICAgICAgICBrZXlUaW1lcz0iMDsgMSIKICAgICAgICAgICAgICAgIGtleVNwbGluZXM9IjAuMTY1LCAwLjg0LCAwLjQ0LCAxIgogICAgICAgICAgICAgICAgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIC8+CiAgICAgICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InN0cm9rZS1vcGFjaXR5IgogICAgICAgICAgICAgICAgYmVnaW49IjBzIiBkdXI9IjEuOHMiCiAgICAgICAgICAgICAgICB2YWx1ZXM9IjE7IDAiCiAgICAgICAgICAgICAgICBjYWxjTW9kZT0ic3BsaW5lIgogICAgICAgICAgICAgICAga2V5VGltZXM9IjA7IDEiCiAgICAgICAgICAgICAgICBrZXlTcGxpbmVzPSIwLjMsIDAuNjEsIDAuMzU1LCAxIgogICAgICAgICAgICAgICAgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIC8+CiAgICAgICAgPC9jaXJjbGU+CiAgICAgICAgPGNpcmNsZSBjeD0iMjIiIGN5PSIyMiIgcj0iMSI+CiAgICAgICAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InIiCiAgICAgICAgICAgICAgICBiZWdpbj0iLTAuOXMiIGR1cj0iMS44cyIKICAgICAgICAgICAgICAgIHZhbHVlcz0iMTsgMjAiCiAgICAgICAgICAgICAgICBjYWxjTW9kZT0ic3BsaW5lIgogICAgICAgICAgICAgICAga2V5VGltZXM9IjA7IDEiCiAgICAgICAgICAgICAgICBrZXlTcGxpbmVzPSIwLjE2NSwgMC44NCwgMC40NCwgMSIKICAgICAgICAgICAgICAgIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPgogICAgICAgICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJzdHJva2Utb3BhY2l0eSIKICAgICAgICAgICAgICAgIGJlZ2luPSItMC45cyIgZHVyPSIxLjhzIgogICAgICAgICAgICAgICAgdmFsdWVzPSIxOyAwIgogICAgICAgICAgICAgICAgY2FsY01vZGU9InNwbGluZSIKICAgICAgICAgICAgICAgIGtleVRpbWVzPSIwOyAxIgogICAgICAgICAgICAgICAga2V5U3BsaW5lcz0iMC4zLCAwLjYxLCAwLjM1NSwgMSIKICAgICAgICAgICAgICAgIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPgogICAgICAgIDwvY2lyY2xlPgogICAgPC9nPgo8L3N2Zz4=" />
+      <div class="container__input-city">
+        <input id="input-city" class="input-city" placeholder="Enter a city" type="text" name="city" value="">
+        <button id="submit-city" type="submit" class="submit-city" name="submit-city"></button>
+      </div>
+      <button id="btn-geoloc" class="btn-geoloc" type="button" name="geolocation">Use my GPS Location</button>
+      <div class="pane-top">
+      </div>
+      <div class="pane-bot">
+      </div>
+    </div>
+
+    <div id="weather-app">
+      <div class="main-container">
+        <div class="header">
+          <h1 id="hello">hello,<br /><span></span></h1>
+            <div id="today-sky" class="container__today-weather">
+              <div class="today-icon">
+                <img id="today-icon">
+              </div>
+              <div id="today-weather" class="today-weather"></div>
+              <div id="today-temp" class="today-temp temp-anim-celsius"></div>
+
+            </div>
+        </div>
+
+          <div class="container__forecast">
+            <div class="forecast forecast-d1">
+              <img class="forecast__img" alt="">
+              <div class="forecast__temp temp-anim-celsius"></div>
+              <div class="forecast__day"></div>
+              <div class="forecast__com"></div>
+
+            </div>
+            <div class="forecast forecast-d2">
+              <img class="forecast__img" alt="">
+              <div class="forecast__temp temp-anim-celsius"></div>
+              <div class="forecast__day"></div>
+              <div class="forecast__com"></div>
+
+            </div>
+            <div class="forecast forecast-d3">
+              <img class="forecast__img" alt="">
+              <div class="forecast__temp temp-anim-celsius"></div>
+              <div class="forecast__day"></div>
+              <div class="forecast__com"></div>
+
+            </div>
+
+          </div>
+
+          <div class="container__quote">
+            <blockquote>
+              <p>
+                Bad weather always looks worse through a window.
+              </p>
+              <div>- Tom Lehrer</div>
+            </blockquote>
+          </div>
+          <footer>
+            <img id="button__back" class="button__back" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIwIDAgMzA2IDMwNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzA2IDMwNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxnIGlkPSJrZXlib2FyZC1hcnJvdy1sZWZ0Ij4KCQk8cG9seWdvbiBwb2ludHM9IjI0Ny4zNSwyNzAuMyAxMzAuMDUsMTUzIDI0Ny4zNSwzNS43IDIxMS42NSwwIDU4LjY1LDE1MyAyMTEuNjUsMzA2ICAgIiBmaWxsPSIjRkZGRkZGIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
+            <a href="https://thomas.tognacci.net" target="_blank" title="Visit me sometime">Thomas Tognacci</a>
+            <input id="button__infos" type="checkbox" class="button__infos">
+            <div class="footer__infos">
+              <p>
+                Due to limitation of the free version of the weather API, forecasts are based on Hour + 24, H+48 and H+72.
+              <br/>Because of that, the temperature are most likely innacurate.
+              </p>
+              <hr style="width: 50%; margin: 2em auto;" />
+              Credtis:
+              <ul>
+                <li>
+                  weather API: <a href="https://openweathermap.org/" target="_blank">openweathermap.org</a>
+                </li>
+                <li>
+                  loading icon: <a href="http://samherbert.net/svg-loaders/" target="_blank">sam herbert</a>
+                </li>
+              </ul>
+            </div>
+          </footer>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/data-test.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>
