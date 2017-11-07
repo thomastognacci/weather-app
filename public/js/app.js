@@ -384,7 +384,7 @@ var app = (function () {
           }, 10);
           setTimeout( () => {
             allTheTemps[i].innerHTML = Math.round((parseInt(allTheTemps[i].innerHTML) * 9/5) + 32)  + '°F';
-          }, (transitionDurationTemp / 2 * 1000));
+          }, (TRANSITION_DURATION / 2));
         }
         celsius = false;
       }
@@ -396,7 +396,7 @@ var app = (function () {
           }, 10);
           setTimeout( () => {
             allTheTemps[i].innerHTML = Math.round((parseInt(allTheTemps[i].innerHTML) - 32) * 5/9) + '°C';
-          }, (transitionDurationTemp / 2 * 1000));
+          }, (TRANSITION_DURATION / 2));
         }
         celsius = true;
       }
