@@ -227,10 +227,9 @@ var app = (function () {
 
   Weather.prototype.init = (that) => {
       Selectors.HELLO.innerHTML = `${that.cityName}`;
-      Selectors.TEMP_TODAY.innerHTML = Math.round(that.tempToday) + '°C';
-
+      Selectors.TEMP_TODAY.innerHTML = Math.round(that.tempToday) + '&#176;C';
       for (let i = 0; i < Selectors.TEMP_FORECAST.length; i++) {
-        Selectors.TEMP_FORECAST[i].innerHTML = Math.round(that.tempForecast[i]) + '°C';
+        Selectors.TEMP_FORECAST[i].innerHTML = Math.round(that.tempForecast[i]) + '&#176;C';
       }
   };
 
@@ -274,7 +273,6 @@ var app = (function () {
     };
 
     for (let i = 0; i < weatherIDs.length ; i++) {
-
       switch (true) {
         case (200  <= weatherIDs[i] && weatherIDs[i] <= 232):         // THUNDERSTORM
           if (i === 0) { // Weather at the current moment
@@ -316,6 +314,13 @@ var app = (function () {
           }
           break;
         case (701  <= weatherIDs[i]  && weatherIDs[i]  <= 781):          // ATMOSPHERE
+          if (i === 0) {
+            Selectors.APP.classList.add('cloudy');
+            Selectors.ICON_TODAY.src = weatherIcon.cloud;
+            sentences = ["not a great day<br/>but you will survive", "look at the shape of this cloud!", "this cloud definitely looks like a dog"];
+          } else {
+            Selectors.WEATHER_FORECAST_IMG[i - 1].src = weatherIcon.cloud;
+          }
           break;
         case (weatherIDs[i]  == 800):                                    // CLEAR
           if (i === 0) {
@@ -362,6 +367,7 @@ var app = (function () {
             Selectors.APP.classList.add('nighty');
             Selectors.WEATHER_TODAY.innerHTML = "either a new meteorological phenomenon was just discovered or i'm out of date";
           } else {
+            Selectors.APP.classList.add('nighty');
             Selectors.WEATHER_FORECAST_IMG[i - 1].src = weatherIcon.bio;
           }
       }
@@ -383,7 +389,7 @@ var app = (function () {
             allTheTemps[i].classList.add('temp-anim-fahrenheit');
           }, 10);
           setTimeout( () => {
-            allTheTemps[i].innerHTML = Math.round((parseInt(allTheTemps[i].innerHTML) * 9/5) + 32)  + '°F';
+            allTheTemps[i].innerHTML = Math.round((parseInt(allTheTemps[i].innerHTML) * 9/5) + 32)  + '&#176;F';
           }, (TRANSITION_DURATION / 2));
         }
         celsius = false;
@@ -395,7 +401,7 @@ var app = (function () {
             allTheTemps[i].classList.add('temp-anim-celsius');
           }, 10);
           setTimeout( () => {
-            allTheTemps[i].innerHTML = Math.round((parseInt(allTheTemps[i].innerHTML) - 32) * 5/9) + '°C';
+            allTheTemps[i].innerHTML = Math.round((parseInt(allTheTemps[i].innerHTML) - 32) * 5/9) + '&#176;C';
           }, (TRANSITION_DURATION / 2));
         }
         celsius = true;
